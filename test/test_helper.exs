@@ -34,7 +34,7 @@ defmodule TestEctoInstrumenterWithConfig do
 end
 
 defmodule Prometheus.EctoInstrumenter.TestRepo do
-  use Ecto.Repo, otp_app: Prometheus.EctoInstrumenter
+  use Ecto.Repo, otp_app: Prometheus.EctoInstrumenter, adapter: Ecto.Adapters.MySQL
 end
 
 defmodule Prometheus.EctoInstrumenter.TestSchema do
