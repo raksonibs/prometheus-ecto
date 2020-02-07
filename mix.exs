@@ -49,7 +49,7 @@ defmodule PrometheusEcto.Mixfile do
   defp deps do
     [
       {:prometheus_ex, "~> 1.1 or ~> 2.0 or ~> 3.0"},
-      {:ecto, "~> 2.0 or ~> 3.0"},
+      {:ecto, github: "coop/ecto", ref: "d710bf9", override: true},
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:mariaex, ">= 0.0.0", only: :test},
