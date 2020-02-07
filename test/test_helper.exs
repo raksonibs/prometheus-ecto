@@ -5,9 +5,12 @@ Application.put_env(
   Prometheus.EctoInstrumenter.TestRepo,
   otp_app: Prometheus.EctoInstrumenter,
   loggers: [Ecto.LogEntry, TestEctoInstrumenter, TestEctoInstrumenterWithConfig],
-  adapter: Ecto.Adapters.MySQL,
+  adapter: Ecto.Adapters.Postgres,
   pool: Ecto.Adapters.SQL.Sandbox,
-  url: "ecto://" <> (System.get_env("MYSQL_URL") || "root@localhost") <> "/ecto_instrumenter_test"
+  username: "postgres",
+  password: "postgres",
+  database: "prometheus_ecto",
+  hostname: "localhost"
 )
 
 Application.put_env(
@@ -34,7 +37,7 @@ defmodule TestEctoInstrumenterWithConfig do
 end
 
 defmodule Prometheus.EctoInstrumenter.TestRepo do
-  use Ecto.Repo, otp_app: Prometheus.EctoInstrumenter, adapter: Ecto.Adapters.MySQL
+  use Ecto.Repo, otp_app: Prometheus.EctoInstrumenter, adapter: Ecto.Adapters.Postgres
 end
 
 defmodule Prometheus.EctoInstrumenter.TestSchema do
